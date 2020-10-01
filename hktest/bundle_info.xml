@@ -1,0 +1,28 @@
+<BundleInfo name="ChimeraX-HKCageTest" version="1.0"
+	    package="chimerax.hkcagetest"
+  	    minSessionVersion="1" maxSessionVersion="1">
+
+  <Author>Luque Lab</Author>
+  <Email>cbrown3667@sdsu.edu</Email>
+  <URL>https://www.luquelab.com/</URL>
+
+  <Synopsis>Create icosahedral mesh of various hexagons, pentagons, and triangles.</Synopsis>
+  <Description>Create icosahedral mesh of hexagons and pentagons using h and k lattice parameters with the trihexagonal lattice.</Description>
+
+  <Categories>
+    <Category name="Higher-Order Structure"/>
+  </Categories>
+
+  <Dependencies>
+    <Dependency name="ChimeraX-Core" version="~=1.0"/>
+    <Dependency name="ChimeraX-Geometry" version="~=1.0"/>
+    <Dependency name="ChimeraX-Markers" version="~=1.0"/>
+  </Dependencies>
+
+  <Classifiers>
+    <PythonClassifier>Development Status :: 2 - Pre-Alpha</PythonClassifier>
+    <PythonClassifier>License :: Free for non-commercial use</PythonClassifier>
+    <ChimeraXClassifier>Command :: hkcagetest :: Higher-Order Structure :: Create icosahedral cage trihex</ChimeraXClassifier>
+  </Classifiers>
+
+</BundleInfo>
