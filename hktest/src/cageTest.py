@@ -214,10 +214,11 @@ def hk_triangle_snub_dual(h, k):
 def hk_triangle_rhomb(h, k):
     # Multiply h,k by 3 so hexagon corners have integer coordinates for
     # exact intersection calculations.
-    corners2d = ((0, 0), (5 * h, 5 * k), (-5 * k, 5 * (h + k)))
+    from math import sqrt
+    corners2d = ((0, 0), ((3+sqrt(3)) * h, (3+sqrt(3)) * k), (-(3+sqrt(3)) * k, (3+sqrt(3)) * (h + k)))
 
     hex_corner_offset = ((2, -1), (1, 1), (-1, 2), (-2, 1), (-1, -1), (1, -2))
-    tri_corner_offset = ((2, -2), (2, 0), (0, 2), (-2, 2), (-2, 0), (0, -2))
+    tri_corner_offset = ((sqrt(3), -sqrt(3)), (sqrt(3), 0), (0, sqrt(3)), (-sqrt(3), sqrt(3)), (-sqrt(3), 0), (0, -sqrt(3)))
     kmax = max(k, h + k)
     triangles2d = []
     hex_edges = []
@@ -228,11 +229,11 @@ def hk_triangle_rhomb(h, k):
                 h1t, k1t = tri_corner_offset[c]
                 h2o, k2o = hex_corner_offset[(c + 1) % 6]
                 h2t, k2t = tri_corner_offset[(c + 1) % 6]
-                tri = ((5 * h0, 5 * k0), (5 * h0 + h1o, 5 * k0 + k1o), (5 * h0 + h2o, 5 * k0 + k2o))
+                tri = (((3+sqrt(3)) * h0, (3+sqrt(3)) * k0), ((3+sqrt(3)) * h0 + h1o, (3+sqrt(3)) * k0 + k1o), ((3+sqrt(3)) * h0 + h2o, (3+sqrt(3)) * k0 + k2o))
                 ti, he = triangle_intersection(tri, corners2d, 2)
                 triangles2d.extend(ti)
                 hex_edges.extend(he)
-                tri = ((5 * h0 + h1o, 5 * k0 + k1o), (5 * h0 + h1o + h1t, 5 * k0 + k1o + k1t), (5 * h0 + h1o + h2t, 5 * k0 + k1o + k2t))
+                tri = (((3+sqrt(3)) * h0 + h1o, (3+sqrt(3)) * k0 + k1o), ((3+sqrt(3)) * h0 + h1o + h1t, (3+sqrt(3)) * k0 + k1o + k1t), ((3+sqrt(3)) * h0 + h1o + h2t, (3+sqrt(3)) * k0 + k1o + k2t))
                 ti, he = triangle_intersection(tri, corners2d, 1)
                 triangles2d.extend(ti)
                 hex_edges.extend(he)
